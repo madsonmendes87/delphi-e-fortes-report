@@ -1,0 +1,66 @@
+unit uRelUsuario;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, RLReport, Vcl.DBCGrids;
+
+type
+  TfrmRelUsuario = class(TForm)
+    relUsuario: TRLReport;
+    rlCabecalho: TRLBand;
+    RLLabel1: TRLLabel;
+    rlLinha: TRLDraw;
+    rlCorpo: TRLBand;
+    rlDBCodigo: TRLDBText;
+    RLDBText1: TRLDBText;
+    RLDBText2: TRLDBText;
+    RLDBText3: TRLDBText;
+    rlCodigo: TRLLabel;
+    elNome: TRLLabel;
+    rlLogin: TRLLabel;
+    rlSetor: TRLLabel;
+
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    procedure carregarDados;
+  end;
+
+var
+  frmRelUsuario: TfrmRelUsuario;
+
+implementation
+
+{$R *.dfm}
+
+uses uDmPrincipal, uConexao;
+
+
+
+
+{ TfrmRelUsuario }
+
+procedure TfrmRelUsuario.carregarDados;
+begin
+    dmConexao.Conexao.Connected := true;
+    with dmPrincipal.qryUsuario do
+    begin
+        Close;
+        SQL.Clear;
+        SQL.Add('SELECT');
+        SQL.Add('   u.us_id, u.us_nome, u.us_login,');
+        SQL.Add('   s.se_nome');
+        SQL.Add('   FROM usuario u');
+        SQL.Add('   LEFT JOIN cadastro_setor s');
+        SQL.Add('   ON s.se_id = u.us_idsetor');
+        Open;
+    end;
+    dmPrincipal.dsUsuario.DataSet := dmPrincipal.qryUsuario;
+    rlDBCodigo.DataSource   := dmPrincipal.dsUsuario;
+    rlDBCodigo.DataField    := 'us_id';
+end;
+
+end.

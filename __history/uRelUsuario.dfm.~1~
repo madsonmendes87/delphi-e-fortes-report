@@ -1,0 +1,33 @@
+object frmRelUsuario: TfrmRelUsuario
+  Left = 0
+  Top = 0
+  Caption = 'Relatorio Usuario'
+  ClientHeight = 749
+  ClientWidth = 785
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  TextHeight = 15
+  object relUsuario: TRLReport
+    Left = -8
+    Top = -8
+    Width = 794
+    Height = 1123
+    DataSource = dmPrincipal.dsUsuario
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -13
+    Font.Name = 'Arial'
+    Font.Style = []
+    object rlCabecalho: TRLBand
+      Left = 38
+      Top = 38
+      Width = 718
+      Height = 19
+      BandType = btHeader
+    end
+  end
+end

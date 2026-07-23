@@ -1,0 +1,15 @@
+object dmPrincipal: TdmPrincipal
+  Height = 480
+  Width = 640
+  object qryUsuario: TFDQuery
+    Connection = dmConexao.Conexao
+    SQL.Strings = (
+      '')
+    Left = 72
+    Top = 24
+  end
+  object dsUsuario: TDataSource
+    Left = 168
+    Top = 24
+  end
+end

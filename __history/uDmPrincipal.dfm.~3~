@@ -1,0 +1,22 @@
+object dmPrincipal: TdmPrincipal
+  Height = 480
+  Width = 640
+  object qryUsuario: TFDQuery
+    Active = True
+    Connection = dmConexao.Conexao
+    SQL.Strings = (
+      'SELECT'
+      '    u.us_id, u.us_nome, u.us_login,'
+      '    s.se_nome'
+      'FROM usuario u'
+      'LEFT JOIN cadastro_setor s'
+      '    ON s.se_id = u.us_idsetor')
+    Left = 72
+    Top = 24
+  end
+  object dsUsuario: TDataSource
+    DataSet = qryUsuario
+    Left = 168
+    Top = 24
+  end
+end

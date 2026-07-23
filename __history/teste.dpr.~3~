@@ -1,0 +1,18 @@
+program teste;
+
+uses
+  Vcl.Forms,
+  uPrincipal in 'uPrincipal.pas' {frmPrincipal},
+  uConexao in 'uConexao.pas' {dmConexao: TDataModule},
+  uDmPrincipal in 'uDmPrincipal.pas' {dmPrincipal: TDataModule};
+
+{$R *.res}
+
+begin
+  Application.Initialize;
+  Application.MainFormOnTaskbar := True;
+  Application.CreateForm(TfrmPrincipal, frmPrincipal);
+  Application.CreateForm(TdmConexao, dmConexao);
+  Application.CreateForm(TdmPrincipal, dmPrincipal);
+  Application.Run;
+end.
